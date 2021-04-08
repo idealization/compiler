@@ -1,32 +1,32 @@
 class Transition:
     def __init__(self, current_state, input_symbol, next_state):
-        self.currentState = current_state
+        self.current_state = current_state
         self.input_symbol = input_symbol
-        self.nextState = next_state
+        self.next_state = next_state
 
 
 class DFA:
     def __init__(self, name, start_state, trans_functions, final_state):
         self.name = name
-        self.startState = start_state
-        self.transFuncs = trans_functions
-        self.finalState = final_state
+        self.start_state = start_state
+        self.trans_functions = trans_functions
+        self.final_state = final_state
 
     def is_error(self, s):
         current = set()
         for c in s:
             destination = set()
             for trans in self.trans_functions:
-                if c in trans.input and trans.current_state in current:
+                if c in trans.input_symbol and trans.current_state in current:
                     destination.append(trans.next_state)
-            if not destination.isEmpty():
+            if len(destination):
                 current = destination
             else:
                 return True
         return current
 
     def is_accept(self, s):
-        temp = self.isError(s)
+        temp = self.is_error(s)
         if type(temp) is set:
             return self.is_final(temp)
         else:
