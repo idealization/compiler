@@ -53,7 +53,7 @@ TYPE = DFA('TYPE', 0, [Transition(0, 'i', 1), Transition(1, 'n', 5), Transition(
                        Transition(0, 's', 4), Transition(4, 't', 8), Transition(8, 'r', 12),
                        Transition(12, 'i', 15), Transition(15, 'n', 17), Transition(17, 'g', 19)], [9, 13, 20, 19])
 INT = DFA('INT', 0, [Transition(0, '0', 1), Transition(0, '-', 2), Transition(0, positive, 3), Transition(2, positive, 3),
-                     Transition(3, digits, 4), Transition(4, digits, 4)], [1, 4])
+                     Transition(3, digits, 4), Transition(4, digits, 4)], [1, 3, 4])
 CHAR = DFA('CHAR', 0, [Transition(0, "'", 1), Transition(1, digits, 2), Transition(1, letter, 3),
                        Transition(1, ' ', 4), Transition(2, "'", 5), Transition(3, "'", 5), Transition(4, "'", 5)], [5])
 BOOL = DFA('BOOL', 0, [Transition(0, 't', 1), Transition(1, 'r', 3), Transition(3, 'u', 5), Transition(5, 'e', 7),
