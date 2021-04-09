@@ -12,30 +12,25 @@ class DFA:
         self.trans_functions = trans_functions
         self.final_state = final_state
 
-    def is_error(self, s):
-        current = set()
+    def is_not_error(self, s):      # DFA에 넣어서 error가 나오면 False
+        current = [0]
         for c in s:
-            destination = set()
+            destination = []
             for trans in self.trans_functions:
-                if c in trans.input_symbol and trans.current_state in current:
+                if (c in trans.input_symbol) and (trans.current_state in current):
                     destination.append(trans.next_state)
             if len(destination):
                 current = destination
             else:
-                return True
+                return False
         return current
 
-    def is_accept(self, s):
-        temp = self.is_error(s)
-        if type(temp) is set:
-            return self.is_final(temp)
+    def is_accept(self, s):         # DFA의 final까지 도달하는지 검사
+        temp = self.is_not_error(s)
+        if type(temp) is list:
+            return temp in self.final_state
         else:
             return False
-
-    def is_final(self, current):
-        if current in self.final_state:
-            return True
-        return False
 
 
 digits = '0123456789'

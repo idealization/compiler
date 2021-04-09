@@ -7,10 +7,10 @@ def lexicalAnalysis(rawString):
     lexemes = [] # list of lexeme(string)
     tokens = [] # list of token(string : dfa.name)
 
-    candidateDFAs = DFAs # copy list of every DFA
+    candidateDFAs = [TYPE, INT, CHAR, BOOL, STRING, ID, KEY, ARITH, ASSIGN, COMP, SEMI, BRACKET, BRACE, PAREN, COMMA, WHITESPACE]
     lexeme = '' # lexeme variable
 
-    while wordIdx <= len(rawString):
+    while wordIdx < len(rawString):
 
         if len(candidateDFAs) == 1:
             correctDFA = candidateDFAs[0]
@@ -25,9 +25,9 @@ def lexicalAnalysis(rawString):
             candidateDFAs = DFAs    # candidateDFAs initialize
 
         else:
-            for dfa in candidateDFAs:
+            for dfa in DFAs:
                 # if current dfa makes error, remove from candidate dfa
-                if dfa.is_error(rawString[wordIdx]):
+                if not dfa.is_not_error(rawString[wordIdx]):
                     candidateDFAs.remove(dfa)
             lexeme += rawString[wordIdx]
             wordIdx += 1
