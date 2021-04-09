@@ -16,9 +16,13 @@ class DFA:
         current = [0]
         for c in s:
             destination = []
+            f = 0
             for trans in self.trans_functions:
                 if (c in trans.input_symbol) and (trans.current_state in current):
                     destination.append(trans.next_state)
+                    f = 1
+            if f == 0:
+                return False
             if len(destination):
                 current = destination
             else:
@@ -28,9 +32,15 @@ class DFA:
     def is_accept(self, s):         # DFA의 final까지 도달하는지 검사
         temp = self.is_not_error(s)
         if type(temp) is list:
-            return temp in self.final_state
+            return self.is_final(temp)
         else:
             return False
+
+    def is_final(self, temp):       # final state에 있는지 검사
+        for i in temp:
+            if i in self.final_state:
+                return True
+        return False
 
 
 digits = '0123456789'
@@ -43,7 +53,7 @@ TYPE = DFA('TYPE', 0, [Transition(0, 'i', 1), Transition(1, 'n', 5), Transition(
                        Transition(0, 's', 4), Transition(4, 't', 8), Transition(8, 'r', 12),
                        Transition(12, 'i', 15), Transition(15, 'n', 17), Transition(17, 'g', 19)], [9, 13, 20, 19])
 INT = DFA('INT', 0, [Transition(0, '0', 1), Transition(0, '-', 2), Transition(0, positive, 3), Transition(2, positive, 3),
-                     Transition(3, digits, 4), Transition(4, digits, 4)], [4])
+                     Transition(3, digits, 4), Transition(4, digits, 4)], [1, 4])
 CHAR = DFA('CHAR', 0, [Transition(0, "'", 1), Transition(1, digits, 2), Transition(1, letter, 3),
                        Transition(1, ' ', 4), Transition(2, "'", 5), Transition(3, "'", 5), Transition(4, "'", 5)], [5])
 BOOL = DFA('BOOL', 0, [Transition(0, 't', 1), Transition(1, 'r', 3), Transition(3, 'u', 5), Transition(5, 'e', 7),
