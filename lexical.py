@@ -1,3 +1,4 @@
+import argparse
 from DFA import *
 
 DFAs = [TYPE, INT, CHAR, BOOL, STRING, ID, KEY, ARITH, ASSIGN, COMP, SEMI, BRACKET, BRACE, PAREN, COMMA, WHITESPACE]
@@ -58,17 +59,20 @@ def lexicalAnalysis(rawString):
                 else:
                     candidateDFAs.remove(ARITH)
         word_final += 1
-    fw.write("----------------------\n")
+    fw.write("-----------------------\n")
     # Print lexemes+tokens info (except for whitespace)
     for i in range(len(lexemes)):
         if not tokens[i] == 'WHITESPACE':
             strFormat = '%-12s%-12s'
             strOut = strFormat % (tokens[i], lexemes[i])
             fw.write(strOut + '\n')
-    fw.write("----------------------\n")
+    fw.write("-----------------------\n")
 
 
-fr = open("input.txt", 'r')
+parser = argparse.ArgumentParser()
+parser.add_argument("input_file_name", help="file name of your input code")
+args = parser.parse_args()
+fr = open(args.input_file_name, 'r')
 data = fr.read()
 lexicalAnalysis(data + ' ')
 
