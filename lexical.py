@@ -3,12 +3,6 @@ from DFA import *
 DFAs = [TYPE, INT, CHAR, BOOL, STRING, ID, KEY, ARITH, ASSIGN, COMP, SEMI, BRACKET, BRACE, PAREN, COMMA, WHITESPACE]
 
 
-def priorityDFA(candidateDFAs):
-    if (candidateDFAs[0]==TYPE and candidateDFAs[1]==ID) or (candidateDFAs[0]==ID and candidateDFAs[1]==TYPE):
-        return TYPE
-    return None
-
-
 def determineDFA(candidateDFAs, finalDFAs):
     if len(finalDFAs) == 2 and ID in finalDFAs:
         finalDFAs.remove(ID)
@@ -16,7 +10,7 @@ def determineDFA(candidateDFAs, finalDFAs):
     elif len(candidateDFAs) == 0 and len(finalDFAs) == 1:
         return list(finalDFAs)
     elif len(candidateDFAs) == 0 and len(finalDFAs) == 0:
-        return False # return NONE??
+        return False
 
 
 def lexicalAnalysis(rawString):
@@ -24,7 +18,6 @@ def lexicalAnalysis(rawString):
     token = ''
     lexemes = []    # list of lexeme(string)
     tokens = []     # list of token(string : dfa.name)
-    correctDFA = None
 
     candidateDFAs = [TYPE, INT, CHAR, BOOL, STRING, ID, KEY, ARITH, ASSIGN, COMP, SEMI, BRACKET, BRACE, PAREN, COMMA, WHITESPACE]
     finalDFAs = set()
@@ -39,7 +32,7 @@ def lexicalAnalysis(rawString):
                 return 'ERROR'
             lexeme = rawString[word_start:word_final - 1]
             lexemes.append(lexeme)
-            token = correctDFA[0].name
+            token = correctDFA[0].token
             tokens.append(token)
             word_start = word_final - 1
             word_final -= 1
@@ -67,13 +60,12 @@ def lexicalAnalysis(rawString):
     # Print lexemes+tokens info (except for whitespace)
     for i in range(len(lexemes)):
         if not tokens[i] == 'WHITESPACE':
-            strFormat = '%-10s%-10s'
+            strFormat = '%-12s%-12s'
             strOut = strFormat % (tokens[i], lexemes[i])
             print(strOut)
-            # print(f"{token[i]}{lexeme[i]}")
     print("---------------------")
 
 
-f = open("input.txt",'r')
-data=f.read()
+f = open("input.txt", 'r')
+data = f.read()
 lexicalAnalysis(data + ' ')
