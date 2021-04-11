@@ -65,10 +65,11 @@ STRING = DFA('STRING', 0, [Transition(0, '"', 1), Transition(1, digits, 2), Tran
                            Transition(2, digits, 5), Transition(2, letter, 6), Transition(2, ' ', 7),
                            Transition(3, digits, 5), Transition(3, letter, 6), Transition(3, ' ', 7),
                            Transition(4, digits, 5), Transition(4, letter, 6), Transition(4, ' ', 7),
+                           Transition(2, '"', 'STRING'), Transition(3, '"', 'STRING'), Transition(4, '"', 'STRING'),
                            Transition(5, digits, 5), Transition(5, letter, 6), Transition(5, ' ', 7),
                            Transition(6, digits, 5), Transition(6, letter, 6), Transition(6, ' ', 7),
                            Transition(7, digits, 5), Transition(7, letter, 6), Transition(7, ' ', 7),
-                           Transition(5, '"', 8), Transition(6, '"', 8), Transition(7, '"', 'STRING')], ['STRING'])
+                           Transition(5, '"', 'STRING'), Transition(6, '"', 'STRING'), Transition(7, '"', 'STRING')], ['STRING'])
 ID = DFA('ID', 0, [Transition(0, letter, 'ID'), Transition(0, '_', 'ID'),
                    Transition('ID', digits, 'ID'), Transition('ID', letter, 'ID'), Transition('ID', '_', 'ID')], ['ID'])
 KEY = DFA('KEY', 0, [Transition(0, 'i', 1), Transition(1, 'f', 'IF'), Transition(0, 'e', 2), Transition(2, 'l', 7),

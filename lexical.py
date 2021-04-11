@@ -14,6 +14,7 @@ def determineDFA(candidateDFAs, finalDFAs):
 
 
 def lexicalAnalysis(rawString):
+    fw = open("input_output.txt", 'w')
     word_start, word_final = 0, 1
     token = ''
     lexemes = []    # list of lexeme(string)
@@ -29,7 +30,8 @@ def lexicalAnalysis(rawString):
         if not candidateDFAs:
             correctDFA = determineDFA(candidateDFAs, finalDFAs)
             if not correctDFA:
-                return 'ERROR'
+                fw.write('ERROR')
+                return 0
             lexeme = rawString[word_start:word_final - 1]
             lexemes.append(lexeme)
             token = correctDFA[0].token
@@ -56,16 +58,17 @@ def lexicalAnalysis(rawString):
                 else:
                     candidateDFAs.remove(ARITH)
         word_final += 1
-    print("---------------------")
+    fw.write("----------------------\n")
     # Print lexemes+tokens info (except for whitespace)
     for i in range(len(lexemes)):
         if not tokens[i] == 'WHITESPACE':
             strFormat = '%-12s%-12s'
             strOut = strFormat % (tokens[i], lexemes[i])
-            print(strOut)
-    print("---------------------")
+            fw.write(strOut + '\n')
+    fw.write("----------------------\n")
 
 
-f = open("input.txt", 'r')
-data = f.read()
+fr = open("input.txt", 'r')
+data = fr.read()
 lexicalAnalysis(data + ' ')
+

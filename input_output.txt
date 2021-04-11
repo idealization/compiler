@@ -1,0 +1,40 @@
+----------------------
+VTYPE       int         
+ID          main        
+LPAREN      (           
+RPAREN      )           
+LBRACE      {           
+VTYPE       char        
+ID          if123       
+ASSIGN      =           
+CHAR        '1'         
+SEMI        ;           
+VTYPE       int         
+INT         0           
+ID          a           
+ASSIGN      =           
+ID          a           
+OP          +           
+INT         -1          
+SEMI        ;           
+RETURN      return      
+OP          -           
+INT         0           
+SEMI        ;           
+RBRACE      }           
+OP          -           
+INT         0           
+COMMA       ,           
+INT         0           
+ID          abc0        
+INT         123         
+IF          if          
+COMMA       ,           
+INT         123         
+ID          if0         
+CHAR        ' '         
+STRING      " "         
+ID          a           
+OP          -           
+INT         1           
+----------------------
