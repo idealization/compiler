@@ -14,8 +14,8 @@ def determineDFA(candidateDFAs, finalDFAs):
         return False
 
 
-def lexicalAnalysis(rawString):
-    fw = open("input_output.txt", 'w')
+def lexicalAnalysis(rawString, input_file_name):
+    fw = open(input_file_name + "_output.txt", 'w')
     word_start, word_final = 0, 1
     token = ''
     lexemes = []    # list of lexeme(string)
@@ -74,5 +74,5 @@ parser.add_argument("input_file_name", help="file name of your input code")
 args = parser.parse_args()
 fr = open(args.input_file_name, 'r')
 data = fr.read()
-lexicalAnalysis(data + ' ')
+lexicalAnalysis(data + ' ', args.input_file_name)
 
