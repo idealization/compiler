@@ -22,6 +22,9 @@ OP          -
 INT         0           
 SEMI        ;           
 RBRACE      }           
+ID          a           
+OP          -           
+INT         1           
 OP          -           
 INT         0           
 COMMA       ,           
@@ -32,9 +35,40 @@ IF          if
 COMMA       ,           
 INT         123         
 ID          if0         
+VTYPE       int         
+VTYPE       char        
+VTYPE       boolean     
+VTYPE       string      
+INT         0           
+INT         -1          
+INT         123         
 CHAR        ' '         
+BOOL        true        
+BOOL        false       
 STRING      " "         
-ID          a           
+ID          _id         
+IF          if          
+ELSE        else        
+WHILE       while       
+CLASS       class       
+RETURN      return      
+OP          +           
 OP          -           
-INT         1           
+OP          *           
+OP          /           
+ASSIGN      =           
+COMP        <           
+COMP        >           
+COMP        <=          
+COMP        >=          
+COMP        ==          
+COMP        !=          
+SEMI        ;           
+LBRACKET    [           
+RBRACKET    ]           
+LPAREN      (           
+RPAREN      )           
+LBRACE      {           
+RBRACE      }           
+COMMA       ,           
 -----------------------
