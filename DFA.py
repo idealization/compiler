@@ -1,11 +1,11 @@
-class Transition:
+class Transition:                               # represent DFA's transition function
     def __init__(self, current_state, input_symbol, next_state):
         self.current_state = current_state
         self.input_symbol = input_symbol
         self.next_state = next_state
 
 
-class DFA:
+class DFA:                                      # represent DFA
     def __init__(self, name, start_state, trans_functions, final_state):
         self.name = name
         self.start_state = start_state
@@ -13,7 +13,7 @@ class DFA:
         self.final_state = final_state
         self.token = None
 
-    def is_not_error(self, s):      # DFA에 넣어서 error가 나오면 False
+    def is_not_error(self, s):                  # return False when string is rejected by DFA
         current = [0]
         for c in s:
             destination = []
@@ -28,23 +28,25 @@ class DFA:
                 current = destination
             else:
                 return False
-        return current
+        return current                          # return current states when string is (or will be) accepted by DFA
 
-    def is_accept(self, s):         # DFA의 final까지 도달하는지 검사
+    def is_accept(self, s):                     # check if string arrives DFA's final state
         temp = self.is_not_error(s)
         if type(temp) is list:
             return self.is_final(temp)
         else:
             return False
 
-    def is_final(self, temp):       # final state에 있는지 검사
+    def is_final(self, temp):                   # check if current state is final state
         for i in temp:
             if i in self.final_state:
-                self.token = i
+                self.token = i                  # determine token as current state
                 return True
         return False
 
 
+# define DFA
+# DFA's final state is candidate token name of the string
 digits = '0123456789'
 positive = '123456789'
 letter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
