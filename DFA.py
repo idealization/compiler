@@ -56,8 +56,9 @@ TYPE = DFA('TYPE', 0, [Transition(0, 'i', 1), Transition(1, 'n', 5), Transition(
                        Transition(14, 'e', 16), Transition(16, 'a', 18), Transition(18, 'n', 'VTYPE'),
                        Transition(0, 's', 4), Transition(4, 't', 8), Transition(8, 'r', 12),
                        Transition(12, 'i', 15), Transition(15, 'n', 17), Transition(17, 'g', 'VTYPE')], ['VTYPE'])
-INT = DFA('INT', 0, [Transition(0, '0', 'INT'), Transition(0, '-', 2), Transition(0, positive, 'INT'),
-                     Transition(2, positive, 'INT'), Transition('INT', digits, 'INT')], ['INT'])
+ZERO = DFA('ZERO', 0, [Transition(0, '0', 'INTEGER')], ['INTEGER'])
+INT = DFA('INT', 0, [Transition(0, '-', 1), Transition(0, positive, 'INTEGER'),
+                     Transition(1, positive, 'INTEGER'), Transition('INTEGER', digits, 'INTEGER')], ['INTEGER'])
 CHAR = DFA('CHAR', 0, [Transition(0, "'", 1), Transition(1, digits, 2), Transition(1, letter, 3), Transition(1, ' ', 4),
                        Transition(2, "'", 'CHAR'), Transition(3, "'", 'CHAR'), Transition(4, "'", 'CHAR')], ['CHAR'])
 BOOL = DFA('BOOL', 0, [Transition(0, 't', 1), Transition(1, 'r', 3), Transition(3, 'u', 5), Transition(5, 'e', 'BOOL'),

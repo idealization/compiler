@@ -1,7 +1,7 @@
 import argparse
 from DFA import *
 
-DFAs = [TYPE, INT, CHAR, BOOL, STRING, ID, KEY, ARITH, ASSIGN, COMP, SEMI, BRACKET, BRACE, PAREN, COMMA, WHITESPACE]
+DFAs = [TYPE, ZERO, INT, CHAR, BOOL, STRING, ID, KEY, ARITH, ASSIGN, COMP, SEMI, BRACKET, BRACE, PAREN, COMMA, WHITESPACE]
 
 
 def determineDFA(candidateDFAs, finalDFAs):                     # determine correctDFA
@@ -21,7 +21,7 @@ def lexicalAnalysis(rawString, input_file_name):                # main algorithm
     tokens = []                                                 # list of token(string : dfa.token)
 
     # set candidate DFA list and final DFA
-    candidateDFAs = [TYPE, INT, CHAR, BOOL, STRING, ID, KEY, ARITH, ASSIGN, COMP, SEMI, BRACKET, BRACE, PAREN, COMMA, WHITESPACE]
+    candidateDFAs = [TYPE, ZERO, INT, CHAR, BOOL, STRING, ID, KEY, ARITH, ASSIGN, COMP, SEMI, BRACKET, BRACE, PAREN, COMMA, WHITESPACE]
     finalDFAs = set()
 
     while word_final <= len(rawString):
@@ -39,7 +39,7 @@ def lexicalAnalysis(rawString, input_file_name):                # main algorithm
             tokens.append(token)                                # append token to list
             word_start = word_final - 1                         # reset index of string and candidate, final DFA
             word_final -= 1
-            candidateDFAs = [TYPE, INT, CHAR, BOOL, STRING, ID, KEY, ARITH, ASSIGN, COMP, SEMI, BRACKET, BRACE, PAREN,
+            candidateDFAs = [TYPE, ZERO, INT, CHAR, BOOL, STRING, ID, KEY, ARITH, ASSIGN, COMP, SEMI, BRACKET, BRACE, PAREN,
                              COMMA, WHITESPACE]
             finalDFAs = set()
         else:
@@ -51,13 +51,13 @@ def lexicalAnalysis(rawString, input_file_name):                # main algorithm
         # - is OP when previous token is INT or ID, and negative sign in other situations
         # also the immediately token of - can be blank
         if rawString[word_start:word_final] == '-':
-            if tokens[-1] == ' ':
-                if tokens[-2] == ('ID' or 'INT'):
+            if lexemes[-1] == ' ':
+                if tokens[-2] == 'ID' or tokens[-2] == 'INTEGER':
                     candidateDFAs.remove(INT)
                 else:
                     candidateDFAs.remove(ARITH)
             else:
-                if tokens[-1] == ('ID' or 'INT'):
+                if tokens[-1] == 'ID' or tokens[-1] == 'INTEGER':
                     candidateDFAs.remove(INT)
                 else:
                     candidateDFAs.remove(ARITH)
@@ -77,4 +77,3 @@ args = parser.parse_args()
 fr = open(args.input_file_name, 'r')
 data = fr.read()
 lexicalAnalysis(data + ' ', args.input_file_name)
-
