@@ -36,6 +36,11 @@ def lexicalAnalysis(rawString, input_file_name):                # main algorithm
             lexeme = rawString[word_start:word_final - 1]       # define lexeme
             lexemes.append(lexeme)                              # append lexeme to list
             token = correctDFA[0].token                         # define token name
+            if token == 'OP':
+                if lexeme == '+' or lexeme == '-':
+                    token = 'ADDSUB'
+                else:
+                    token = 'MULTDIV'
             tokens.append(token)                                # append token to list
             word_start = word_final - 1                         # reset index of string and candidate, final DFA
             word_final -= 1
