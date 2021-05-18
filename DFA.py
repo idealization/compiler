@@ -93,6 +93,6 @@ BRACE = DFA('BRACE', 0, [Transition(0, '{', 'LBRACE'), Transition(0, '}', 'RBRAC
 COMMA = DFA('COMMA', 0, [Transition(0, ',', 'COMMA')], ['COMMA'])
 WHITESPACE = DFA('WHITESPACE', 0, [Transition(0, '\t', 'WHITESPACE'), Transition(0, '\n', 'WHITESPACE'),
                                    Transition(0, ' ', 'WHITESPACE')], ['WHITESPACE'])
-
+EOF = DFA('$', 0, [Transition(0, '$', '$')], ['$'])
 
 
