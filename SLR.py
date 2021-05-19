@@ -220,7 +220,6 @@ slr_table = SLRTable([[[0, 'VTYPE', 's2']],
                       [],
                       [],
                       [],
-                      [[83, 'VDECL', 50], [83, 'ASSIGN', 51], [83, 'BLOCK', 84], [83, 'STMT', 49]]
-                      ])
+                      [[83, 'VDECL', 50], [83, 'ASSIGN', 51], [83, 'BLOCK', 84], [83, 'STMT', 49]]])
 
 
