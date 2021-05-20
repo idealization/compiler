@@ -22,9 +22,7 @@ VTYPE       int
 ID          main        
 LPAREN      (           
 VTYPE       string      
-LBRACKET    [           
-RBRACKET    ]           
-ID          args        
+ID          s           
 RPAREN      )           
 LBRACE      {           
 VTYPE       int         
@@ -36,14 +34,6 @@ VTYPE       int
 ID          b           
 ASSIGN      =           
 INTEGER     4           
-SEMI        ;           
-ID          Test        
-ID          myTest      
-ASSIGN      =           
-ID          new         
-ID          Test        
-LPAREN      (           
-RPAREN      )           
 SEMI        ;           
 RETURN      return      
 INTEGER     0           

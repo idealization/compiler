@@ -3,11 +3,9 @@ class Test {
         return a+b;
     }
 
-    int main(string[] args) {
+    int main(string s) {
         int a = 3;
         int b = 4;
-
-        Test myTest = new Test();
 
         return 0;
     }
