@@ -100,7 +100,7 @@ slr_table = SLRTable([[[0, 'VTYPE', 's2']],
                       [[47, 'VTYPE', 's55']],
                       [[48, 'RETURN', 's57']],
                       [[49, 'VTYPE', 's2'],[49, 'ID', 's54'],[49, 'RBRACE', 'r24'], [49, 'IF', 's52'], [49, 'WHILE', 's53'], [49, 'RETURN', 'r24']],
-                      [[50, 'VTYPE', 'r25'], [50, 'ID', 'r25'], [50, 'RBRACE', 'r25'], [50, 'IF', 'r25'], [50, 'WHILE', 'r25'], [50, 'RETURN', 'r25']]
+                      [[50, 'VTYPE', 'r25'], [50, 'ID', 'r25'], [50, 'RBRACE', 'r25'], [50, 'IF', 'r25'], [50, 'WHILE', 'r25'], [50, 'RETURN', 'r25']],
                       [[51, 'SEMI', 's59']],
                       [[52, 'LPAREN', 's60']],
                       [[53, 'LPAREN', 's61']],
