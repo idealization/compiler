@@ -16,11 +16,8 @@ def syntax_analyzer(data):
                 data[index] = 'ADDSUB'
             else:
                 data[index] = 'MULTDIV'
-        print(state_stack)
-        print(left_substring)
         for action in slr_table.action[state_stack[-1]]:
             if data[index] == action[1]:                # find action corresponding to terminal value
-                print("found", action, left_substring)
                 if action[2][0] == 's':                 # shift and goto decision
                     state_stack.append(int(action[2][1:]))
                     left_substring.append(data[index])
@@ -53,7 +50,3 @@ args = parser.parse_args()
 fr = open(args.input_file_name, 'r')
 lexical_output = fr.read()
 syntax_analyzer(lexical_output)
-
-"""fr = open("input.txt_output.txt", 'r')
-lexical_output = fr.read()
-syntax_analyzer(lexical_output)"""
