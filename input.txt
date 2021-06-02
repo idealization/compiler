@@ -2,11 +2,67 @@ class Test {
     int sum(int a, int b) {
         return a+b;
     }
+    int noArg(){
+        return 0;
+    }
+    string returnString(){
+        return "temp";
+    }
+    int returnInt(){
+        return 2;
+    }
+    char returnChar(){
+        return 'a';
+    }
+    boolean returnTrue(){
+        return true;
+    }
+    boolean returnFalse(){
+        return false;
+    }
+
 
     int main(string s) {
         int a = 3;
         int b = 4;
+        int c;
+        char d;
+        char e = 'a';
+        boolean f;
+        boolean g = true;
+        boolean h = false;
+        string i;
+        string j = "temp";
+        if (true >= false){
+           a = 2;
+        }
+        else{
+            if(true > true){
+                b=3;
+            }
+            else{
 
-        return 0;
+            }
+        }
+        if(true==false){
+        }
+        if(true!=false){
+        }
+        if(true<false){
+        }
+        if(true<=false){
+        }
+        c = a+b;
+        c = a-b;
+        c = a/b;
+        c = a*b;
+        while(true){
+
+        }
+        while(false<true){
+            c = 2;
+        }
+
+        return 'a';
     }
 }
