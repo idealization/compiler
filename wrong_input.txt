@@ -1,0 +1,12 @@
+class Test {
+    int sum(int a, int b) {
+        return a+b;
+    }
+
+    int main(string s) {
+        int a = 1x3;
+        int 1b = 4
+
+        return 0;
+    }
+}
